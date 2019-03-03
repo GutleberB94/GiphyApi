@@ -6,3 +6,12 @@ footer {
     bottom: 0px;
     margin-top: 50%;
   }
+
+  .search-buttons {
+      padding: 10% 5%;
+  }
+
+  #search-bar-side {
+border-left: solid;
+border: gray;
+  }
