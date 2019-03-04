@@ -11,7 +11,7 @@ footer {
       padding: 10% 5%;
   }
 
-  #search-bar-side {
+  .search-bar-side {
 border-left: solid;
 border: gray;
   }
