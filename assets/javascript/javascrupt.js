@@ -10,19 +10,43 @@ var topics = ["space", "dogs", "cats", "pizza", "beach", "snowboarding"]
 
 $(document).ready(function () {
 
+    function renderButtons() {
+        $(".search-buttons").empty();
 
+        for (var i = 0; i < topics.length; i++) {
 
+            var newButton = $("<button>");
+            newButton.addClass("btn btn-dark");
+            newButton.addClass("gifButton")
+            newButton.attr("data-name", topics[i])
+            newButton.attr("value", topics[i])
+            newButton.text(topics[i]);
+
+            console.log("button ", newButton.val())
+
+            $(".search-buttons").append(newButton);
+
+        }
+    }
 
     // event for on the search button click
     $(".searchbuttons").on("click", function () {
 
-
         // gets the search input
         var searchTerm = $("#search-term").val().trim();
-
         topics.push(searchTerm);
+        renderButtons();
 
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + apiKey + "&limit=2";
+    });
+
+    function displayGif() {
+
+        var queryTerm = $(this).val();
+
+        console.log("query: " + queryTerm)
+
+
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + queryTerm + apiKey + "&limit=2";
 
         $.ajax({
             url: queryURL,
@@ -31,8 +55,6 @@ $(document).ready(function () {
 
             .then(function (response) {
                 var results = response.data;
-
-
 
                 for (var i = 0; i < results.length; i++) {
 
@@ -50,39 +72,16 @@ $(document).ready(function () {
                     gifDisplay.append(ratingDisplay);
                     gifDisplay.append(gifURL);
 
-
                     $(".gifs-show-here").prepend(gifDisplay);
                 }
                 renderButtons();
 
             });
 
-    });
+    };
 
-    
-
-    function renderButtons() {
-        $(".search-buttons").empty();
-
-        for (var i = 0; i < topics.length; i++) {
-
-            var newButton = $("<button>");
-            newButton.addClass("btn btn-dark");
-            newButton.addClass("searchbuttons")
-            newButton.attr("data-name", topics[i])
-            newButton.attr("value", topics[i])
-            newButton.text(topics[i]);
-
-            console.log("button ", newButton.val())
-
-            $(".search-buttons").append(newButton);
-
-        }
-    }
+    $(document).on("click", ".gifButton", displayGif);
 
     renderButtons();
 
-
 }); //document ready close
-
-
