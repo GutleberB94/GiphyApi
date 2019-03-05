@@ -66,8 +66,13 @@ $(document).ready(function () {
 
                     var gifURL = $("<img>")
                     gifDisplay.addClass("gif");
+                    gifURL.addClass('gifImage')
+                    gifURL.attr("src", results[i].images.fixed_height_still.url);
+                    gifURL.attr({ "data-state": "animate" });
+                    gifURL.attr({ "data-animate": results[i].images.fixed_height.url });
+                    gifURL.attr({ "data-state": "still" })
+                    gifURL.attr({ "data-still": results[i].images.fixed_height_still.url });
 
-                    gifURL.attr("src", results[i].images.fixed_height.url);
 
                     gifDisplay.append(ratingDisplay);
                     gifDisplay.append(gifURL);
@@ -77,10 +82,27 @@ $(document).ready(function () {
                 renderButtons();
 
             });
-
     };
 
+    function animateGif() {
+
+        var state = $(this).attr("data-state");
+
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
+    };
+
+
+    $(document).on("click", ".gifImage", animateGif);
+
     $(document).on("click", ".gifButton", displayGif);
+
+
 
     renderButtons();
 
