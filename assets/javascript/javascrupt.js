@@ -14,11 +14,13 @@ $(document).ready(function () {
 
 
     // event for on the search button click
-    $("#button-addon2").on("click", function () {
+    $(".searchbuttons").on("click", function () {
 
 
         // gets the search input
         var searchTerm = $("#search-term").val().trim();
+
+        topics.push(searchTerm);
 
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + apiKey + "&limit=2";
 
@@ -51,22 +53,22 @@ $(document).ready(function () {
 
                     $(".gifs-show-here").prepend(gifDisplay);
                 }
-
+                renderButtons();
 
             });
 
     });
 
+    
+
     function renderButtons() {
+        $(".search-buttons").empty();
 
         for (var i = 0; i < topics.length; i++) {
 
-            $(".search-buttons").empty();
-
-
-
             var newButton = $("<button>");
             newButton.addClass("btn btn-dark");
+            newButton.addClass("searchbuttons")
             newButton.attr("data-name", topics[i])
             newButton.attr("value", topics[i])
             newButton.text(topics[i]);
