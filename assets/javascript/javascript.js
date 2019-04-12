@@ -46,7 +46,7 @@ $(document).ready(function () {
         console.log("query: " + queryTerm)
 
 
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + queryTerm + apiKey + "&limit=2";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + queryTerm + apiKey + "&limit=10";
 
         $.ajax({
             url: queryURL,
@@ -59,6 +59,8 @@ $(document).ready(function () {
                 for (var i = 0; i < results.length; i++) {
 
                     var rating = results[i].rating;
+
+                    if (rating === 'pg' || rating === 'g') {
 
                     var ratingDisplay = $("<p>").text("Rating: " + rating);
 
@@ -79,6 +81,7 @@ $(document).ready(function () {
 
                     $(".gifs-show-here").prepend(gifDisplay);
                 }
+            }
                 renderButtons();
 
             });

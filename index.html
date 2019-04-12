@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../GiphyApi/assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <script type="text/javascript" src="../GiphyApi/assets/javascript/javascrupt.js"></script>
+    <script type="text/javascript" src="../GiphyApi/assets/javascript/javascript.js"></script>
 
 
 </head>
@@ -39,23 +39,21 @@
 
     <!-- jumbotron with heading -->
     <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Giphtastic</h1>
-            <p class="lead text-muted">Type a search term in the search bar to add gifs to the screen. You can then
-                click on them to animate them. At the top you can click reset to clear the gifs and new buttons on the
-                screen.</p>
-        </div>
+        <h1 class="jumbotron-heading">Giphtastic</h1>
+        <p class="lead text-muted">Type a search term in the search bar to add gifs to the screen. You can then
+            click on them to animate them. At the top you can click reset to clear the gifs and new buttons on the
+            screen.</p>
     </section>
 
+    <div class="container buttons">
 
-    <div class="container">
         <div class="row">
             <div class="col-8">
-                <div class="search-buttons"></div>
+                <div class="search-buttons">
 
+                </div>
             </div>
         </div>
-
     </div>
 
     <!--container to hold gifs and search bar -->
@@ -72,7 +70,8 @@
                     <input type="text" class="form-control" id="search-term" placeholder="Gif Search Term"
                         aria-label="Gif Search" aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary searchbuttons" type="button" id="button-addon2">Search</button>
+                        <button class="btn btn-outline-secondary searchbuttons" type="button"
+                            id="button-addon2">Search</button>
                     </div>
                 </div>
             </div>
@@ -80,10 +79,9 @@
     </div>
 
 
-
     <!--     footer  -->
 
-    <footer class="container-fluid text-center">
+    <footer class="footer container-fluid mt-auto py-3 text-center">
         <p>Copyright &copy</p>
     </footer>
 
